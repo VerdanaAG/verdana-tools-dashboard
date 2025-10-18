@@ -1,6 +1,9 @@
-import { Wrench, Github, ExternalLink } from 'lucide-react';
+import { Wrench, Github, ExternalLink, Lock, LogOut } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
-export default function Header() {
+export default function Header({ onLoginClick }) {
+  const { isAuthenticated, logout } = useAuth();
+
   return (
     <header className="border-b bg-card">
       <div className="container mx-auto px-4 py-6 max-w-7xl">
@@ -18,6 +21,24 @@ export default function Header() {
           </div>
           
           <div className="flex items-center gap-4">
+            {isAuthenticated ? (
+              <button
+                onClick={logout}
+                className="flex items-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 rounded-lg transition-colors text-sm"
+              >
+                <LogOut className="w-4 h-4" />
+                <span className="hidden sm:inline">Abmelden</span>
+              </button>
+            ) : (
+              <button
+                onClick={onLoginClick}
+                className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg transition-colors text-sm font-medium"
+              >
+                <Lock className="w-4 h-4" />
+                <span className="hidden sm:inline">Anmelden</span>
+              </button>
+            )}
+            
             <a
               href="https://github.com/VerdanaAG"
               target="_blank"

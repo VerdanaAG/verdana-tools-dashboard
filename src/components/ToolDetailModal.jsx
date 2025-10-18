@@ -1,7 +1,9 @@
-import { X, ExternalLink, Calendar, Tag, CheckCircle, Github, Globe, Key } from 'lucide-react';
+import { X, ExternalLink, Calendar, Tag, CheckCircle, Github, Globe, Key, Lock } from 'lucide-react';
 import { statusConfig } from '../data/tools';
+import { useAuth } from '../contexts/AuthContext';
 
-export default function ToolDetailModal({ tool, category, onClose }) {
+export default function ToolDetailModal({ tool, category, onClose, onLoginClick }) {
+  const { isAuthenticated } = useAuth();
   const status = statusConfig[tool.status];
 
   const statusColors = {
@@ -105,7 +107,23 @@ export default function ToolDetailModal({ tool, category, onClose }) {
           )}
 
           {/* Resources */}
-          {tool.resources && Object.keys(tool.resources).length > 0 && (
+          {!isAuthenticated && (tool.resources || tool.credentials) && (
+            <div className="bg-muted/50 border rounded-lg p-6 text-center">
+              <Lock className="w-12 h-12 mx-auto mb-3 text-muted-foreground" />
+              <h3 className="font-semibold mb-2">Geschützter Bereich</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Ressourcen-Links und Zugangsdaten sind nur für angemeldete Benutzer sichtbar.
+              </p>
+              <button
+                onClick={onLoginClick}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                <Lock className="w-4 h-4" />
+                Jetzt anmelden
+              </button>
+            </div>
+          )}
+          {isAuthenticated && tool.resources && Object.keys(tool.resources).length > 0 && (
             <div>
               <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
                 <Globe className="w-4 h-4" />
@@ -133,7 +151,7 @@ export default function ToolDetailModal({ tool, category, onClose }) {
           )}
 
           {/* Credentials */}
-          {tool.credentials && Object.keys(tool.credentials).length > 0 && (
+          {isAuthenticated && tool.credentials && Object.keys(tool.credentials).length > 0 && (
             <div className="bg-muted/50 border rounded-lg p-4">
               <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
                 <Key className="w-4 h-4" />

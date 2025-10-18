@@ -1,17 +1,20 @@
 import { useState, useMemo } from 'react';
 import './App.css';
 import { toolsData, categories, getStats } from './data/tools';
+import { AuthProvider } from './contexts/AuthContext';
 import Header from './components/Header';
 import StatsOverview from './components/StatsOverview';
 import CategoryFilter from './components/CategoryFilter';
 import SearchBar from './components/SearchBar';
 import ToolCard from './components/ToolCard';
 import ToolDetailModal from './components/ToolDetailModal';
+import LoginModal from './components/LoginModal';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTool, setSelectedTool] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const stats = getStats();
 
   // Filter tools based on category and search
@@ -27,9 +30,14 @@ function App() {
     });
   }, [selectedCategory, searchQuery]);
 
+  const handleLoginClick = () => {
+    setShowLoginModal(true);
+  };
+
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <AuthProvider>
+      <div className="min-h-screen bg-background">
+        <Header onLoginClick={handleLoginClick} />
       
       <main className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Stats Overview */}
@@ -78,15 +86,22 @@ function App() {
         )}
       </main>
 
-      {/* Tool Detail Modal */}
-      {selectedTool && (
-        <ToolDetailModal 
-          tool={selectedTool}
-          category={categories[selectedTool.category]}
-          onClose={() => setSelectedTool(null)}
-        />
-      )}
-    </div>
+        {/* Tool Detail Modal */}
+        {selectedTool && (
+          <ToolDetailModal 
+            tool={selectedTool}
+            category={categories[selectedTool.category]}
+            onClose={() => setSelectedTool(null)}
+            onLoginClick={handleLoginClick}
+          />
+        )}
+
+        {/* Login Modal */}
+        {showLoginModal && (
+          <LoginModal onClose={() => setShowLoginModal(false)} />
+        )}
+      </div>
+    </AuthProvider>
   );
 }
 
