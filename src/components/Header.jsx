@@ -13,9 +13,9 @@ export default function Header({ onLoginClick }) {
               <Wrench className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">Verdana AG Tools Dashboard</h1>
+              <h1 className="text-2xl font-bold">Dachhelden Tools Dashboard</h1>
               <p className="text-sm text-muted-foreground">
-                Zentrale Übersicht aller Manus-Tools und Projekte
+                Zentrale Übersicht aller Tools und Projekte
               </p>
             </div>
           </div>

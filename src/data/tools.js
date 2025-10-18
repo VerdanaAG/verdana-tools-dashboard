@@ -27,10 +27,10 @@ export const toolsData = [
   {
     id: 'dachberater-ch',
     name: 'dachberater.ch',
-    description: 'Dachberatungs-Website (frühere Version, vor haus-sanierung.ch)',
+    description: 'Professionelle Dachberatungs-Website für Verdana AG',
     category: 'websites',
     url: 'https://dachberater.ch',
-    status: 'archived',
+    status: 'live',
     tags: ['React', 'Tailwind CSS', 'Cloudflare Pages'],
     createdDate: '2025-10-15',
     features: [
