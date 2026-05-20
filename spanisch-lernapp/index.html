@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12372a">
+  <title>Verdana Spanisch Coach</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Verdana AG Lernprogramm</p>
+      <h1>Spanisch Coach</h1>
+      <p class="lead">Spanisch von 0: Basics, Kunden, Meetings, Produkte, Projekte und Verdana-relevanter Wortschatz.</p>
+    </div>
+    <section class="stats">
+      <div><span>Level</span><strong id="level">1</strong></div>
+      <div><span>XP</span><strong id="xp">0</strong></div>
+      <div><span>Streak</span><strong id="streak">0</strong></div>
+    </section>
+  </header>
+
+  <nav class="tabs">
+    <button class="active" data-view="home">Dashboard</button>
+    <button data-view="lessons">Lektionen</button>
+    <button data-view="cards">Flashcards</button>
+    <button data-view="quiz">Quiz</button>
+    <button data-view="dialogs">Dialoge</button>
+    <button data-view="words">Wortschatz</button>
+  </nav>
+
+  <main>
+    <section id="home" class="view active-view">
+      <article class="hero card">
+        <p class="eyebrow">Heute</p>
+        <h2>10 Minuten Spanisch starten</h2>
+        <p>Beginne mit Begrüssung, Vorstellung und einfachen Verdana-Sätzen. Fortschritt wird lokal gespeichert.</p>
+        <button class="primary" data-jump="lessons">Erste Lektion öffnen</button>
+      </article>
+      <section class="grid3">
+        <article class="card"><h3>Basics</h3><p>Hola, gracias, Zahlen, Zeit, Fragen und Alltagssätze.</p></article>
+        <article class="card"><h3>Business</h3><p>Kunden, Offerten, Termine, Qualität, Lieferung und Projekte.</p></article>
+        <article class="card"><h3>Training</h3><p>Flashcards, Quiz, Dialoge, XP, Level und tägliche Ziele.</p></article>
+      </section>
+      <article class="card">
+        <h3>Fortschritt</h3>
+        <div class="progress"><div id="progressBar"></div></div>
+        <p id="progressText">0 Prozent abgeschlossen</p>
+      </article>
+    </section>
+
+    <section id="lessons" class="view">
+      <h2>Lektionen</h2>
+      <div id="lessonList" class="list"></div>
+      <article id="lessonDetail" class="card detail"></article>
+    </section>
+
+    <section id="cards" class="view">
+      <h2>Flashcards</h2>
+      <article id="flashcard" class="flashcard card">
+        <p id="flashCategory" class="eyebrow"></p>
+        <h3 id="flashFront"></h3>
+        <p id="flashBack" class="answer hidden"></p>
+      </article>
+      <div class="actions">
+        <button id="showAnswer">Antwort zeigen</button>
+        <button id="knownCard">Gewusst</button>
+        <button id="nextCard">Nächste Karte</button>
+      </div>
+    </section>
+
+    <section id="quiz" class="view">
+      <h2>Quiz</h2>
+      <article class="card">
+        <p id="quizQuestion" class="question"></p>
+        <div id="quizOptions" class="options"></div>
+        <p id="quizFeedback"></p>
+      </article>
+    </section>
+
+    <section id="dialogs" class="view">
+      <h2>Dialogsimulationen</h2>
+      <div id="dialogList" class="list"></div>
+    </section>
+
+    <section id="words" class="view">
+      <h2>Wortschatzbank</h2>
+      <input id="searchInput" class="search" placeholder="Suche Deutsch, Spanisch oder Kategorie">
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Deutsch</th><th>Spanisch</th><th>Kategorie</th><th>Beispiel</th></tr></thead>
+          <tbody id="vocabTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>Verdana Spanisch Coach MVP</footer>
+  <script src="app.js"></script>
+</body>
+</html>
