@@ -13,7 +13,7 @@
     <div>
       <p class="eyebrow">Verdana AG Lernprogramm</p>
       <h1>Spanisch Coach</h1>
-      <p class="lead">Spanisch von 0: Basics, Kunden, Meetings, Produkte, Projekte und Verdana-relevanter Wortschatz.</p>
+      <p class="lead">Spanisch von 0: 100 Startwörter, Birkenbihl-Dekodierung, adaptive Wiederholung, Kunden, Meetings, Produkte und Projekte.</p>
     </div>
     <section class="stats">
       <div><span>Level</span><strong id="level">1</strong></div>
@@ -25,6 +25,7 @@
   <nav class="tabs">
     <button class="active" data-view="home">Dashboard</button>
     <button data-view="lessons">Lektionen</button>
+    <button data-view="birkenbihl">Birkenbihl</button>
     <button data-view="cards">Flashcards</button>
     <button data-view="quiz">Quiz</button>
     <button data-view="dialogs">Dialoge</button>
@@ -36,13 +37,13 @@
       <article class="hero card">
         <p class="eyebrow">Heute</p>
         <h2>10 Minuten Spanisch starten</h2>
-        <p>Beginne mit Begrüssung, Vorstellung und einfachen Verdana-Sätzen. Fortschritt wird lokal gespeichert.</p>
-        <button class="primary" data-jump="lessons">Erste Lektion öffnen</button>
+        <p>Beginne mit Verstehen statt Pauken: erst dekodieren, dann hören/lesen, dann aktivieren.</p>
+        <button class="primary" data-jump="birkenbihl">Birkenbihl-Modus öffnen</button>
       </article>
       <section class="grid3">
-        <article class="card"><h3>Basics</h3><p>Hola, gracias, Zahlen, Zeit, Fragen und Alltagssätze.</p></article>
-        <article class="card"><h3>Business</h3><p>Kunden, Offerten, Termine, Qualität, Lieferung und Projekte.</p></article>
-        <article class="card"><h3>Training</h3><p>Flashcards, Quiz, Dialoge, XP, Level und tägliche Ziele.</p></article>
+        <article class="card"><h3>100 Startwörter</h3><p>Basics, Zeit, Kommunikation, Business, Projekt, Produkte, Qualität, Verkauf und Logistik.</p></article>
+        <article class="card"><h3>Birkenbihl-Methode</h3><p>Wort-für-Wort-Dekodierung, passives Lesen/Hören und Aktivierung über Dialoge.</p></article>
+        <article class="card"><h3>Moderne Lernlogik</h3><p>Adaptive Wiederholung, Retrieval Practice, Mini-Quiz und Fortschrittssteuerung.</p></article>
       </section>
       <article class="card">
         <h3>Fortschritt</h3>
@@ -57,8 +58,28 @@
       <article id="lessonDetail" class="card detail"></article>
     </section>
 
+    <section id="birkenbihl" class="view">
+      <h2>Birkenbihl Sprint</h2>
+      <article class="card">
+        <p class="eyebrow">Schritt 1: Dekodieren</p>
+        <h3 id="decodeSentence"></h3>
+        <p id="decodeLiteral" class="answer"></p>
+        <p id="decodeNatural"></p>
+        <div class="actions">
+          <button id="nextDecode">Nächster Satz</button>
+          <button id="speakDecode">Vorlesen</button>
+          <button id="completeDecode">Verstanden + XP</button>
+        </div>
+      </article>
+      <section class="grid3">
+        <article class="card"><h3>1 Dekodierung</h3><p>Spanischen Satz Wort für Wort verstehen, auch wenn die deutsche Wortstellung ungewohnt klingt.</p></article>
+        <article class="card"><h3>2 Passiv aufnehmen</h3><p>Satz mehrfach lesen und optional per Browser-Stimme anhören.</p></article>
+        <article class="card"><h3>3 Aktivieren</h3><p>Danach im Quiz oder Dialog selbst abrufen. Nicht auswendig pauken.</p></article>
+      </section>
+    </section>
+
     <section id="cards" class="view">
-      <h2>Flashcards</h2>
+      <h2>Adaptive Flashcards</h2>
       <article id="flashcard" class="flashcard card">
         <p id="flashCategory" class="eyebrow"></p>
         <h3 id="flashFront"></h3>
@@ -72,7 +93,7 @@
     </section>
 
     <section id="quiz" class="view">
-      <h2>Quiz</h2>
+      <h2>Retrieval Quiz</h2>
       <article class="card">
         <p id="quizQuestion" class="question"></p>
         <div id="quizOptions" class="options"></div>
@@ -97,7 +118,8 @@
     </section>
   </main>
 
-  <footer>Verdana Spanisch Coach MVP</footer>
+  <footer>Verdana Spanisch Coach MVP · 100 Wörter · Birkenbihl Sprint · GitHub Pages ready</footer>
+  <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
